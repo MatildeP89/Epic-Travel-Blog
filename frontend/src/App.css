@@ -1,0 +1,53 @@
+#root {background-color: rgb(252, 218, 223);}
+
+.postcard {transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;}
+.postcard:hover {transform: scale(1.05);
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);}
+
+.title{color: rgb(62, 5, 70); transition: text-shadow 0.3s; transition: transform 0.3s; }
+.title:hover{text-shadow: 3px 3px 10px rgba(245, 80, 209, 0.7); transform: scale(1.05);}
+
+.home{transition: transform 0.3s, box-shadow 0.3s ease-in-out;}
+.home:hover{transform: scale(1.05);}
+
+.loginbutton{transition: transform 0.3s, box-shadow 0.3s ease-in-out;}
+.loginbutton:hover{transform: scale(1.05);}
+
+
+.registerbutton {transition: transform 0.3s, box-shadow 0.3s ease-in-out;}
+.registerbutton:hover{transform: scale(1.05);}
+
+.button{background-image: linear-gradient(pink,purple,black); transition: transform 0.3s, box-shadow 0.3s ease-in-out;}
+.button:hover{transform: scale(1.05);}
+
+.success-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #9f9ef1;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+    min-width: 300px;
+  }
+
+  .registeralert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b2b1f3;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+    min-width: 300px;
+  }
+
+footer{background-image: linear-gradient(rgb(194, 55, 194), grey, white);}
