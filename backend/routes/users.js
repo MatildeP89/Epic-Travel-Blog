@@ -20,7 +20,7 @@ router.post("/register", async (req, res) => {
         // Verifica se l'email esiste già
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ message: "Email già registrata" });
+            return res.status(400).json({ message: "Email already registered" });
         }
 
         const newUser = new User({ firstName, lastName, email, password });
@@ -44,10 +44,10 @@ router.post("/login", async (req, res) => {
             email
         })
         if (!user) {
-            return res.status(404).json({ message: "Utente non trovato" });
+            return res.status(404).json({ message: "User not found" });
         }
         if (user.password !== password) {
-            return res.status(401).json({ message: "Password errata" });
+            return res.status(401).json({ message: "Wrong password" });
         }
         res.json(user);
     } catch (err) {
@@ -65,13 +65,13 @@ router.put("/:id", async (req, res) => {
       const user = await User.findById(req.params.id);
   
       if (!user) {
-        return res.status(404).json({ message: "Utente non trovato" });
+        return res.status(404).json({ message: "User not found" });
       }
   
       // Verifica password attuale se si sta tentando di cambiarla
       if (newPassword) {
         if (user.password !== currentPassword) {
-          return res.status(401).json({ message: "Password attuale non corretta" });
+          return res.status(401).json({ message: "Current password not correct" });
         }
         user.password = newPassword;
       }
@@ -96,9 +96,9 @@ router.put("/:id", async (req, res) => {
       try {
           const comment = await User.findByIdAndDelete(req.params.id);
           if (!comment) {
-              return res.status(404).json({ message: "utente non trovato" });
+              return res.status(404).json({ message: "user not found" });
           }
-          res.json({ message: "utente eliminato" });
+          res.json({ message: "user deleted" });
       } catch (err) {
           res.status(500).json({ error: err.message });
       }

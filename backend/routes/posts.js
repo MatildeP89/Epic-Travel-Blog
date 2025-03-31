@@ -112,14 +112,14 @@ router.put("/:id", upload.single('cover'), async (req, res) => {
         ).populate('author', 'firstName lastName');
 
         if (!post) {
-            return res.status(404).json({ message: "Post non trovato" });
+            return res.status(404).json({ message: "Post not found" });
         }
 
         res.json(post);
     } catch (err) {
-        console.error('Errore server:', err);
+        console.error('Server error:', err);
         res.status(500).json({ 
-            message: "Errore durante l'aggiornamento del post",
+            message: "Error while updating the post",
             error: err.message 
         });
     }
@@ -130,9 +130,9 @@ router.delete("/:id", async (req, res) => {
     try {
         const post = await Post.findByIdAndDelete(req.params.id);
         if (!post) {
-            return res.status(404).json({ message: "Post non trovato" });
+            return res.status(404).json({ message: "Post not found" });
         }
-        res.json({ message: "Post eliminato" });
+        res.json({ message: "Post deleted" });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
