@@ -45,7 +45,7 @@ const Login = () => {
         }
     }, [login, navigate]);
     const handleGoogleLogin = () => {
-        window.location.href = process.env.REACT_APP_BACKEND_HOST + '/auth/google';
+        window.location.href = process.env.REACT_APP_API_BASE_URL + '/auth/google';
     }
     
     return (
