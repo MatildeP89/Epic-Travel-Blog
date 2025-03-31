@@ -26,7 +26,7 @@ const EditPost = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/posts/${id}`);
+                const response = await axios.get(process.env.REACT_APP_API_BASE_URL + `/posts/${id}`);
                 const post = response.data;
                 
                 if (post.author._id !== user._id) {
@@ -78,7 +78,7 @@ const EditPost = () => {
             }
 
             const response = await axios.put(
-                `http://localhost:3001/posts/${id}`, 
+                process.env.REACT_APP_API_BASE_URL + `/posts/${id}`, 
                 formDataToSend,
                 {
                     headers: {

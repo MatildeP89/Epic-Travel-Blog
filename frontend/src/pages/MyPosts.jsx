@@ -13,7 +13,7 @@ const MyPosts = () => {
   const fetchMyPosts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:3001/posts?author=${user._id}`);
+      const response = await axios.get(process.env.REACT_APP_API_BASE_URL + `/posts?author=${user._id}`);
       setPosts(response.data.posts);
     } catch (err) {
       console.error('Errore nel caricamento dei post:', err);
@@ -31,7 +31,7 @@ const MyPosts = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:3001/posts/${postId}`);
+      await axios.delete(process.env.REACT_APP_API_BASE_URL + `/posts/${postId}`);
       fetchMyPosts(); // Ricarica i post dopo l'eliminazione
     } catch (err) {
       setError('Errore durante la eliminazione del post');

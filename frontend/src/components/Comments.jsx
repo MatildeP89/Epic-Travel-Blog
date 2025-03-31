@@ -12,7 +12,7 @@ const Comments = ({ postId }) => {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/comments/post/${postId}`);
+            const response = await axios.get(process.env.REACT_APP_API_BASE_URL + `/comments/post/${postId}`);
             setComments(response.data);
         } catch (err) {
             setError('Errore nel caricamento dei commenti');
@@ -26,7 +26,7 @@ const Comments = ({ postId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/comments', {
+            const response = await axios.post( process.env.REACT_APP_API_BASE_URL + '/comments', {
                 content: newComment,
                 author: user._id,
                 post: postId
@@ -41,10 +41,10 @@ const Comments = ({ postId }) => {
 
     const handleDelete = async (commentId) => {
         try {
-            await axios.delete(`http://localhost:3001/comments/${commentId}`);
+            await axios.delete(process.env.REACT_APP_API_BASE_URL + `/comments/${commentId}`);
             setComments(comments.filter(comment => comment._id !== commentId));
         } catch (err) {
-            setError('Errore durante l\'eliminazione del commento');
+            setError('Error while deleting the comment');
         }
     };
 

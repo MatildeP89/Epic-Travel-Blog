@@ -55,7 +55,7 @@ const CreatePost = () => {
             formDataToSend.append('cover', coverImage);
     
             const response = await axios.post(
-                "http://localhost:3001/posts", 
+                process.env.REACT_APP_API_BASE_URL + "/posts", 
                 formDataToSend,
                 {
                     headers: {

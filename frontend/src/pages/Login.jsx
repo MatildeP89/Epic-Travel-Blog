@@ -20,7 +20,7 @@ const Login = () => {
             login(user, token);
             navigate('/');
         } catch (err) {
-            setError(err.response?.data?.message || 'Errore durante il login');
+            setError(err.response?.data?.message || 'Error while logging in');
         }
     }
     
@@ -37,15 +37,15 @@ const Login = () => {
                     login(response.data.user, token);
                     navigate('/');
                 }).catch(error => {
-                    setError('Errore di autenticazione con Google');
+                    setError('Authentication error with Google');
                 });
             } catch (error) {
-                setError('Errore di autenticazione con Google');
+                setError('Authentication error with Google');
             }
         }
     }, [login, navigate]);
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3001/auth/google';
+        window.location.href = process.env.REACT_APP_BACKEND_HOST + '/auth/google';
     }
     
     return (
@@ -54,11 +54,11 @@ const Login = () => {
                 <Col xs={12} md={6}>
                     <Card className="shadow-sm">
                         <Card.Body className="p-4">
-                            <h2 className="text-center mb-4">Accedi</h2>
+                            <h2 className="text-center mb-4">Login</h2>
                             {error && <Alert variant="danger">{error}</Alert>}
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3" controlId="email">
-                                    <Form.Label>Email</Form.Label>
+                                    <Form.Label>Email Address</Form.Label>
                                     <Form.Control 
                                         type="email" 
                                         placeholder="Inserisci email" 
@@ -79,11 +79,11 @@ const Login = () => {
                                 </Form.Group>
                                 <div className="d-grid gap-2 mb-3">
                                     <Button variant="primary" type="submit" size="lg" className="py-2">
-                                        Accedi
+                                        Login
                                     </Button>
                                 </div>
                                 <div className="text-center mb-3">
-                                    <span className="text-muted">oppure</span>
+                                    <span className="text-muted">or</span>
                                 </div>
                                 <div className="d-grid gap-2">
                                     <Button 
@@ -94,11 +94,11 @@ const Login = () => {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-google me-2" viewBox="0 0 16 16">
                                             <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
                                         </svg>
-                                        Accedi con Google
+                                        Login with Google
                                     </Button>
                                 </div>
                                 <div className="text-center mt-4">
-                                    <p className="mb-0">Non hai un account? <Link to="/register">Registrati</Link></p>
+                                    <p className="mb-0">You don't have an account yet?<Link to="/register">Register</Link></p>
                                 </div>
                             </Form>
                         </Card.Body>

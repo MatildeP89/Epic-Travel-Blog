@@ -17,7 +17,7 @@ const PostDetails = () => {
         const fetchPost = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:3001/posts/${id}`);
+                const response = await axios.get(process.env.REACT_APP_API_BASE_URL + `/posts/${id}`);
                 setPost(response.data);
                 setError(null);
             } catch (error) {
@@ -33,7 +33,7 @@ const PostDetails = () => {
     const handleDelete = async () => {
         if (window.confirm('Are you sure you want to delete this post?')) {
             try {
-                await axios.delete(`http://localhost:3001/posts/${id}`);
+                await axios.delete(process.env.REACT_APP_API_BASE_URL + `/posts/${id}`);
                 navigate('/my-posts');
             } catch (err) {
                 setError('Error while deleting the post');

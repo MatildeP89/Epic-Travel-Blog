@@ -56,7 +56,7 @@ setSuccess("You have successfully registered. You will now be redirected to the 
     };
     
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:3001/auth/google';
+        window.location.href = process.env.REACT_APP_API_BASE_URL + '/auth/google';
     };
     
     return (
