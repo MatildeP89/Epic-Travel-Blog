@@ -61,7 +61,7 @@ const Login = () => {
                                     <Form.Label>Email Address</Form.Label>
                                     <Form.Control 
                                         type="email" 
-                                        placeholder="Inserisci email" 
+                                        placeholder="Insert your email" 
                                         value={email} 
                                         onChange={(e) => setEmail(e.target.value)} 
                                         className="py-2"
