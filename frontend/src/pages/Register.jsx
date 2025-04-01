@@ -43,7 +43,7 @@ const Register = () => {
             
             const { user, token } = response.data;
 
-setSuccess("You have successfully registered. You will now be redirected to the login page");
+setSuccess("You have successfully registered.");
     setTimeout(() =>{
         setSuccess(null);
         login(user, token);
